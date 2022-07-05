@@ -6,7 +6,7 @@ export const Button = (props) => {
   return (
     <div>
       <button
-        style={{ backgroundColor: colorButton }}
+        style={{ backgroundColor: props.disabled ? 'gray' : colorButton }}
         onClick={() => setColorButton(newColorButton)}
         disabled={props.disabled}
       >
