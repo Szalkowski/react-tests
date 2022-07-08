@@ -1,16 +1,21 @@
 import { useState } from 'react';
+import { replaceCamelWithSpace } from '../../App';
 
 export const Button = (props) => {
-  const [colorButton, setColorButton] = useState('red');
-  const newColorButton = colorButton === 'red' ? 'blue' : 'red';
+  const [colorButton, setColorButton] = useState('MediumVioletRed');
+  const newColorButton =
+    colorButton === 'MediumVioletRed' ? 'MidnightBlue' : 'MediumVioletRed';
+
   return (
     <div>
       <button
-        style={{ backgroundColor: props.disabled ? 'gray' : colorButton }}
+        style={{
+          backgroundColor: props.disabled ? 'gray' : colorButton,
+        }}
         onClick={() => setColorButton(newColorButton)}
         disabled={props.disabled}
       >
-        Click to {newColorButton}
+        Click to {replaceCamelWithSpace(newColorButton)}
       </button>
     </div>
   );
