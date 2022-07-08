@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from './App';
+import App, { replaceCamelWithSpace } from './App';
 
 test('button has correct initial color', () => {
   render(<App />);
@@ -23,4 +23,16 @@ test('checkbox starts unchecked', () => {
   render(<App />);
   const checkbox = screen.getByRole('checkbox', { label: 'Check for disable' });
   expect(checkbox).not.toBeChecked();
+});
+
+describe('spaces before camel-case capital letters', () => {
+  test('Works for no inner capital letters', () => {
+    expect(replaceCamelWithSpace('Red')).toBe('Red');
+  });
+  test('Works for one inner capital letter', () => {
+    expect(replaceCamelWithSpace('MidnightBlue')).toBe('Midnight Blue');
+  });
+  test('Works for multiple inner capital letters', () => {
+    expect(replaceCamelWithSpace('MediumVioletRed')).toBe('Medium Violet Red');
+  });
 });
